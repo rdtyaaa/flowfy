@@ -215,23 +215,38 @@
       }
 
       .price-container {
-        display: flex;
         justify-content: center;
         align-items: center;
-        gap: 8px;
-        flex-wrap: wrap;
       }
 
       .original-price {
+        display: block;
         text-decoration: line-through;
         color: #999;
         font-size: 0.8rem;
+        margin: 8px;
       }
 
       .discount-price {
         color: #e8a5c8;
         font-weight: 700;
         font-size: 0.9rem;
+      }
+
+      .discount-percentage {
+        background: #e8a5c8;
+        color: white;
+        padding: 2px 6px;
+        border-radius: 4px;
+        font-size: 0.6em;
+        font-weight: bold;
+      }
+
+      .discount-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 8px; /* memberikan jarak antar elemen */
       }
 
       .custom-card {
@@ -602,7 +617,7 @@
           <div class="products-grid">
             <div
               class="product-card"
-              onclick="orderProduct('Lily Elegance Bouquet', 'Rp 175.000')"
+              onclick="orderProduct('Lily Elegance Bouquet', 'Rp 65.000')"
             >
               <div class="product-image">
                 <img
@@ -618,14 +633,17 @@
               </div>
               <h4 class="product-name">Lily Elegance Bouquet</h4>
               <div class="price-container">
-                <span class="original-price">Rp 200.000</span>
-                <span class="discount-price">Rp 175.000</span>
+                <span class="original-price">Rp 105.000</span>
+                <div class="discount-container">
+                  <span class="discount-percentage">-38%</span>
+                  <span class="discount-price">Rp 65.000</span>
+                </div>
               </div>
             </div>
 
             <div
               class="product-card"
-              onclick="orderProduct('Blue Harmony Bouquet', 'Rp 165.000')"
+              onclick="orderProduct('Blue Harmony Bouquet', 'Rp 45.000')"
             >
               <div class="product-image">
                 <img
@@ -641,14 +659,17 @@
               </div>
               <h4 class="product-name">Blue Harmony Bouquet</h4>
               <div class="price-container">
-                <span class="original-price">Rp 190.000</span>
-                <span class="discount-price">Rp 165.000</span>
+                <span class="original-price">Rp 95.000</span>
+                <div class="discount-container">
+                  <span class="discount-percentage">-53%</span>
+                  <span class="discount-price">Rp 45.000</span>
+                </div>
               </div>
             </div>
 
             <div
               class="product-card"
-              onclick="orderProduct('Gerbera Sunshine Bouquet', 'Rp 155.000')"
+              onclick="orderProduct('Gerbera Sunshine Bouquet', 'Rp 75.000')"
             >
               <div class="product-image">
                 <img
@@ -664,8 +685,11 @@
               </div>
               <h4 class="product-name">Gerbera Sunshine Bouquet</h4>
               <div class="price-container">
-                <span class="original-price">Rp 180.000</span>
-                <span class="discount-price">Rp 155.000</span>
+                <span class="original-price">Rp 125.000</span>
+                <div class="discount-container">
+                  <span class="discount-percentage">-40%</span>
+                  <span class="discount-price">Rp 75.000</span>
+                </div>
               </div>
             </div>
 
