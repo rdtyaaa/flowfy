@@ -1,0 +1,1241 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flowfy - Beautiful Bouquets</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(135deg, #fef7f0 0%, #f8e8f5 100%);
+        min-height: 100vh;
+        color: #6b5b73;
+      }
+
+      .container {
+        max-width: 400px;
+        margin: 0 auto;
+        padding: 20px;
+        min-height: 100vh;
+      }
+
+      /* Banner Section */
+      .banner {
+        background: linear-gradient(135deg, #f8bbd9 0%, #e8a5c8 100%);
+        border-radius: 20px;
+        padding: 30px 20px;
+        text-align: center;
+        margin-bottom: 25px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .banner::before {
+        content: "";
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="80" cy="40" r="1.5" fill="rgba(255,255,255,0.1)"/><circle cx="40" cy="80" r="1" fill="rgba(255,255,255,0.1)"/></svg>');
+        animation: float 20s infinite linear;
+      }
+
+      @keyframes float {
+        0% {
+          transform: translateX(-50%) translateY(-50%) rotate(0deg);
+        }
+        100% {
+          transform: translateX(-50%) translateY(-50%) rotate(360deg);
+        }
+      }
+
+      .banner h1 {
+        font-size: 2.5rem;
+        color: white;
+        font-weight: 700;
+        margin-bottom: 8px;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        position: relative;
+        z-index: 1;
+      }
+
+      .banner p {
+        color: rgba(255, 255, 255, 0.9);
+        font-size: 1rem;
+        position: relative;
+        z-index: 1;
+      }
+
+      /* Social Media Section */
+      .social-section {
+        margin-bottom: 30px;
+      }
+
+      .social-title {
+        text-align: center;
+        font-size: 1.1rem;
+        font-weight: 600;
+        margin-bottom: 15px;
+        color: #8d7a9b;
+      }
+
+      .social-links {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+      }
+
+      .social-btn {
+        background: linear-gradient(135deg, #e8a5c8 0%, #d4a5e8 100%);
+        color: white;
+        padding: 12px 20px;
+        border-radius: 25px;
+        text-decoration: none;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      .social-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+      }
+
+      /* Tabs Section */
+      .tabs {
+        margin-bottom: 20px;
+      }
+
+      .tab-buttons {
+        display: flex;
+        background: rgba(255, 255, 255, 0.7);
+        border-radius: 15px;
+        padding: 5px;
+        margin-bottom: 25px;
+        backdrop-filter: blur(10px);
+      }
+
+      .tab-btn {
+        flex: 1;
+        padding: 12px 20px;
+        background: none;
+        border: none;
+        border-radius: 10px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        color: #8d7a9b;
+        position: relative;
+      }
+
+      .tab-btn.active {
+        background: linear-gradient(135deg, #f8bbd9 0%, #e8a5c8 100%);
+        color: white;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      .tab-content {
+        display: none;
+      }
+
+      .tab-content.active {
+        display: block;
+        animation: fadeIn 0.3s ease;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Products Grid */
+      .products-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+      }
+
+      .product-card {
+        background: rgba(255, 255, 255, 0.8);
+        border-radius: 15px;
+        padding: 15px;
+        text-align: center;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+      }
+
+      .product-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+      }
+
+      .product-image {
+        width: 100%;
+        height: 120px;
+        background: linear-gradient(135deg, #ffeef8 0%, #f0e6ff 100%);
+        border-radius: 10px;
+        margin-bottom: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2rem;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .product-image::before {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M50 20 Q60 30 50 40 Q40 30 50 20" fill="rgba(248,187,217,0.3)"/><path d="M30 50 Q40 60 30 70 Q20 60 30 50" fill="rgba(212,165,232,0.3)"/><path d="M70 50 Q80 60 70 70 Q60 60 70 50" fill="rgba(248,187,217,0.3)"/></svg>');
+      }
+
+      .product-name {
+        font-weight: 600;
+        margin-bottom: 8px;
+        color: #6b5b73;
+        font-size: 0.9rem;
+      }
+
+      .price-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 8px;
+        flex-wrap: wrap;
+      }
+
+      .original-price {
+        text-decoration: line-through;
+        color: #999;
+        font-size: 0.8rem;
+      }
+
+      .discount-price {
+        color: #e8a5c8;
+        font-weight: 700;
+        font-size: 0.9rem;
+      }
+
+      .custom-card {
+        grid-column: span 2;
+        background: linear-gradient(135deg, #e8a5c8 0%, #d4a5e8 100%);
+        color: white;
+      }
+
+      .custom-card .product-image {
+        background: rgba(255, 255, 255, 0.2);
+      }
+
+      .custom-card .product-name,
+      .custom-card .discount-price {
+        color: white;
+      }
+
+      /* About Section */
+      .about-content {
+        background: rgba(255, 255, 255, 0.8);
+        border-radius: 15px;
+        padding: 25px;
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+      }
+
+      .about-content h3 {
+        color: #8d7a9b;
+        margin-bottom: 15px;
+        font-size: 1.3rem;
+      }
+
+      .about-content p {
+        line-height: 1.6;
+        margin-bottom: 15px;
+        color: #6b5b73;
+      }
+
+      .contact-info {
+        background: linear-gradient(135deg, #ffeef8 0%, #f0e6ff 100%);
+        padding: 15px;
+        border-radius: 10px;
+        margin-top: 15px;
+      }
+
+      .contact-info strong {
+        color: #8d7a9b;
+      }
+
+      /* Modal Styles */
+      .modal-overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 1000;
+        backdrop-filter: blur(5px);
+      }
+
+      .modal-overlay.active {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        animation: fadeIn 0.3s ease;
+      }
+
+      .modal {
+        background: white;
+        border-radius: 20px;
+        padding: 25px;
+        width: 90%;
+        max-width: 450px;
+        max-height: 90vh;
+        overflow-y: auto;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        animation: slideUp 0.3s ease;
+      }
+
+      @keyframes slideUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px) scale(0.9);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+        }
+      }
+
+      .modal-header {
+        text-align: center;
+        margin-bottom: 20px;
+        padding-bottom: 15px;
+        border-bottom: 2px solid #f0f0f0;
+      }
+
+      .modal-header h3 {
+        color: #8d7a9b;
+        font-size: 1.3rem;
+        margin-bottom: 5px;
+      }
+
+      .selected-product {
+        background: linear-gradient(135deg, #ffeef8 0%, #f0e6ff 100%);
+        padding: 10px 15px;
+        border-radius: 10px;
+        color: #6b5b73;
+        font-weight: 500;
+      }
+
+      .form-group {
+        margin-bottom: 20px;
+      }
+
+      .form-group label {
+        display: block;
+        margin-bottom: 8px;
+        color: #8d7a9b;
+        font-weight: 600;
+        font-size: 0.9rem;
+      }
+
+      .form-group input,
+      .form-group textarea,
+      .form-group select {
+        width: 100%;
+        padding: 12px 15px;
+        border: 2px solid #e8e8e8;
+        border-radius: 10px;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+        background: rgba(255, 255, 255, 0.8);
+      }
+
+      .form-group input:focus,
+      .form-group textarea:focus,
+      .form-group select:focus {
+        outline: none;
+        border-color: #e8a5c8;
+        box-shadow: 0 0 0 3px rgba(232, 165, 200, 0.1);
+      }
+
+      .form-group textarea {
+        resize: vertical;
+        min-height: 80px;
+      }
+
+      .datetime-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+      }
+
+      .delivery-options {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+        margin-bottom: 20px;
+      }
+
+      .delivery-option {
+        padding: 15px;
+        border: 2px solid #e8e8e8;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-align: center;
+        background: rgba(255, 255, 255, 0.8);
+      }
+
+      .delivery-option:hover {
+        border-color: #e8a5c8;
+      }
+
+      .delivery-option.selected {
+        border-color: #e8a5c8;
+        background: linear-gradient(135deg, #ffeef8 0%, #f0e6ff 100%);
+      }
+
+      .delivery-option input[type="radio"] {
+        display: none;
+      }
+
+      .delivery-option-icon {
+        font-size: 1.5rem;
+        margin-bottom: 8px;
+      }
+
+      .delivery-option-title {
+        font-weight: 600;
+        color: #6b5b73;
+        margin-bottom: 5px;
+      }
+
+      .delivery-option-desc {
+        font-size: 0.8rem;
+        color: #999;
+      }
+
+      .modal-buttons {
+        display: flex;
+        gap: 10px;
+        margin-top: 25px;
+      }
+
+      .btn {
+        flex: 1;
+        padding: 12px 20px;
+        border: none;
+        border-radius: 10px;
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .btn-cancel {
+        background: #f0f0f0;
+        color: #666;
+      }
+
+      .btn-cancel:hover {
+        background: #e0e0e0;
+      }
+
+      .btn-order {
+        background: linear-gradient(135deg, #e8a5c8 0%, #d4a5e8 100%);
+        color: white;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      .btn-order:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+      }
+
+      .selected-product-container {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        background: linear-gradient(135deg, #ffeef8 0%, #f0e6ff 100%);
+        padding: 15px;
+        border-radius: 12px;
+        margin-bottom: 5px;
+      }
+
+      .selected-product-image {
+        width: 60px;
+        height: 60px;
+        border-radius: 10px;
+        background: linear-gradient(135deg, #f8bbd9 0%, #e8a5c8 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        flex-shrink: 0;
+        overflow: hidden;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .selected-product-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 8px;
+      }
+
+      .selected-product-info {
+        flex: 1;
+      }
+
+      .selected-product {
+        background: none;
+        padding: 0;
+        color: #6b5b73;
+        font-weight: 600;
+        font-size: 1rem;
+      }
+
+      /* Mobile Responsiveness */
+      @media (max-width: 480px) {
+        .container {
+          padding: 15px;
+        }
+
+        .banner h1 {
+          font-size: 2rem;
+        }
+
+        .products-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .custom-card {
+          grid-column: span 1;
+        }
+
+        .modal {
+          padding: 20px;
+          margin: 20px;
+        }
+
+        .datetime-row {
+          grid-template-columns: 1fr;
+        }
+
+        .delivery-options {
+          grid-template-columns: 1fr;
+        }
+
+        .modal-buttons {
+          flex-direction: column;
+        }
+
+        .selected-product-container {
+          flex-direction: column;
+          text-align: center;
+          gap: 10px;
+        }
+
+        .selected-product-image {
+          width: 80px;
+          height: 80px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <!-- Banner Section -->
+      <div class="banner">
+        <h1>🌸 Flowfy</h1>
+        <p>Beautiful Bouquets for Every Moment</p>
+      </div>
+
+      <!-- Social Media Section -->
+      <div class="social-section">
+        <h3 class="social-title">Follow Us</h3>
+        <div class="social-links">
+          <a
+            href="https://instagram.com/flowfy.gift"
+            class="social-btn"
+            target="_blank"
+          >
+            📸 Instagram
+          </a>
+        </div>
+      </div>
+
+      <!-- Tabs Section -->
+      <div class="tabs">
+        <div class="tab-buttons">
+          <button class="tab-btn active" onclick="switchTab('products')">
+            Products
+          </button>
+          <button class="tab-btn" onclick="switchTab('about')">About Us</button>
+        </div>
+
+        <!-- Products Tab -->
+        <div class="tab-content active" id="products">
+          <div class="products-grid">
+            <div
+              class="product-card"
+              onclick="orderProduct('Lily Elegance Bouquet', 'Rp 175.000')"
+            >
+              <div class="product-image">
+                <img
+                  src="images/500131920_17844990513488890_509485197936157356_n.jpg"
+                  alt="Lily Elegance Bouquet"
+                  style="
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    border-radius: 10px;
+                  "
+                />
+              </div>
+              <h4 class="product-name">Lily Elegance Bouquet</h4>
+              <div class="price-container">
+                <span class="original-price">Rp 200.000</span>
+                <span class="discount-price">Rp 175.000</span>
+              </div>
+            </div>
+
+            <div
+              class="product-card"
+              onclick="orderProduct('Blue Harmony Bouquet', 'Rp 165.000')"
+            >
+              <div class="product-image">
+                <img
+                  src="images/501159486_17845071756488890_1116318068030086047_n.jpg"
+                  alt="Blue Harmony Bouquet"
+                  style="
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    border-radius: 10px;
+                  "
+                />
+              </div>
+              <h4 class="product-name">Blue Harmony Bouquet</h4>
+              <div class="price-container">
+                <span class="original-price">Rp 190.000</span>
+                <span class="discount-price">Rp 165.000</span>
+              </div>
+            </div>
+
+            <div
+              class="product-card"
+              onclick="orderProduct('Gerbera Sunshine Bouquet', 'Rp 155.000')"
+            >
+              <div class="product-image">
+                <img
+                  src="images/501679534_17846087607488890_4761912365636862771_n.jpg"
+                  alt="Gerbera Sunshine Bouquet"
+                  style="
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    border-radius: 10px;
+                  "
+                />
+              </div>
+              <h4 class="product-name">Gerbera Sunshine Bouquet</h4>
+              <div class="price-container">
+                <span class="original-price">Rp 180.000</span>
+                <span class="discount-price">Rp 155.000</span>
+              </div>
+            </div>
+
+            <div
+              class="product-card custom-card"
+              onclick="orderProduct('Custom Bouquet', 'Harga sesuai request')"
+            >
+              <div class="product-image">✨</div>
+              <h4 class="product-name">Custom Bouquet</h4>
+              <div class="price-container">
+                <span class="discount-price">Harga sesuai request</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- About Tab -->
+        <div class="tab-content" id="about">
+          <div class="about-content">
+            <h3>Tentang Flowfy</h3>
+            <p>
+              Flowfy adalah toko buket bunga premium yang berlokasi di
+              Bojongsoang, Bandung. Kami menghadirkan rangkaian bunga segar dan
+              berkualitas tinggi untuk setiap momen spesial Anda.
+            </p>
+
+            <p>
+              Dengan pengalaman bertahun-tahun dalam industri florist, kami
+              berkomitmen memberikan pelayanan terbaik dan buket bunga yang
+              indah untuk berbagai acara seperti ulang tahun, anniversary,
+              wisuda, dan momen istimewa lainnya.
+            </p>
+
+            <div class="contact-info">
+              <p>
+                <strong>📍 Alamat:</strong> Bojongsoang, Bandung, Jawa Barat
+              </p>
+              <p><strong>📞 Kontak:</strong> WhatsApp untuk pemesanan</p>
+              <p><strong>🕒 Jam Buka:</strong> Setiap hari, 08:00 - 20:00</p>
+              <p><strong>🚚 Layanan:</strong> Delivery & Pickup tersedia</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Order Modal -->
+    <div class="modal-overlay" id="orderModal">
+      <div class="modal">
+        <div class="modal-header">
+          <h3>Form Pemesanan</h3>
+          <div class="selected-product-container">
+            <div class="selected-product-image" id="selectedProductImage">
+              ✨
+            </div>
+            <div class="selected-product-info">
+              <div class="selected-product" id="selectedProduct"></div>
+            </div>
+          </div>
+        </div>
+
+        <form id="orderForm">
+          <div class="form-group">
+            <label for="customerName">Nama Pemesan *</label>
+            <input
+              type="text"
+              id="customerName"
+              name="customerName"
+              required
+              placeholder="Contoh: Tiara"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="phoneNumber">Nomor HP *</label>
+            <input
+              type="tel"
+              id="phoneNumber"
+              name="phoneNumber"
+              required
+              placeholder="Contoh: +62 821-5151-9891"
+            />
+          </div>
+
+          <div class="form-group">
+            <label>Metode Pengambilan *</label>
+            <div class="delivery-options">
+              <label class="delivery-option" for="delivery">
+                <input
+                  type="radio"
+                  id="delivery"
+                  name="deliveryMethod"
+                  value="delivery"
+                  required
+                />
+                <div class="delivery-option-icon">🚚</div>
+                <div class="delivery-option-title">Diantar</div>
+                <div class="delivery-option-desc">Kami antar ke alamat</div>
+              </label>
+              <label class="delivery-option" for="pickup">
+                <input
+                  type="radio"
+                  id="pickup"
+                  name="deliveryMethod"
+                  value="pickup"
+                  required
+                />
+                <div class="delivery-option-icon">🏪</div>
+                <div class="delivery-option-title">Ambil Sendiri</div>
+                <div class="delivery-option-desc">Pickup di toko</div>
+              </label>
+            </div>
+          </div>
+
+          <div class="form-group" id="addressGroup">
+            <label for="deliveryAddress">Alamat Pengiriman *</label>
+            <textarea
+              id="deliveryAddress"
+              name="deliveryAddress"
+              placeholder="Contoh: Jl. Komp. Permata Buah Batu Blok G 57 A (Kost Kembangan) Lengkong, Kec. Bojongsoang, Bandung, Jawa Barat 40287"
+            ></textarea>
+          </div>
+
+          <div class="datetime-row">
+            <div class="form-group">
+              <label for="deliveryDate"
+                ><span id="dateLabel">Tanggal Pengiriman</span> *</label
+              >
+              <input
+                type="date"
+                id="deliveryDate"
+                name="deliveryDate"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="deliveryTime"
+                ><span id="timeLabel">Jam Pengiriman</span> *</label
+              >
+              <input
+                type="time"
+                id="deliveryTime"
+                name="deliveryTime"
+                required
+                min="08:00"
+                max="19:00"
+              />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="orderDetails">Rincian Pesanan</label>
+            <textarea
+              id="orderDetails"
+              name="orderDetails"
+              placeholder="Tambahan khusus untuk pesanan (opsional)"
+            ></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="cardMessage">Tulisan di Kartu Ucapan</label>
+            <textarea
+              id="cardMessage"
+              name="cardMessage"
+              placeholder="Contoh: here's to the one who always has my back. i love u loads. happy birthday titi"
+            ></textarea>
+          </div>
+
+          <div class="modal-buttons">
+            <button type="button" class="btn btn-cancel" onclick="closeModal()">
+              Batal
+            </button>
+            <button type="submit" class="btn btn-order">
+              Pesan via WhatsApp
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script>
+      let selectedProductData = {};
+
+      function switchTab(tabName) {
+        // Hide all tab contents
+        const tabContents = document.querySelectorAll(".tab-content");
+        tabContents.forEach((content) => {
+          content.classList.remove("active");
+        });
+
+        // Remove active class from all tab buttons
+        const tabButtons = document.querySelectorAll(".tab-btn");
+        tabButtons.forEach((button) => {
+          button.classList.remove("active");
+        });
+
+        // Show selected tab content and activate button
+        document.getElementById(tabName).classList.add("active");
+
+        // Find the button that was clicked and make it active
+        const clickedButton = Array.from(tabButtons).find((btn) =>
+          btn.getAttribute("onclick").includes(tabName)
+        );
+        if (clickedButton) {
+          clickedButton.classList.add("active");
+        }
+      }
+
+      // Updated orderProduct function untuk mendukung gambar
+      function orderProduct(productName, price, imageSrc = null) {
+        selectedProductData = {
+          name: productName,
+          price: price,
+          image: imageSrc,
+        };
+
+        // Update product info
+        document.getElementById(
+          "selectedProduct"
+        ).textContent = `${productName} - ${price}`;
+
+        // Update product image
+        const imageContainer = document.getElementById("selectedProductImage");
+        if (imageSrc && imageSrc !== "✨") {
+          imageContainer.innerHTML = `<img src="${imageSrc}" alt="${productName}" style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;">`;
+        } else {
+          // For custom bouquet or if no image
+          imageContainer.innerHTML = "✨";
+          imageContainer.style.background =
+            "linear-gradient(135deg, #e8a5c8 0%, #d4a5e8 100%)";
+        }
+
+        // Show modal
+        document.getElementById("orderModal").classList.add("active");
+        document.body.style.overflow = "hidden";
+      }
+
+      // Update onclick handlers di HTML products untuk menyertakan imageSrc
+      // Contoh implementasi:
+      document.addEventListener("DOMContentLoaded", function () {
+        // Update product cards dengan gambar
+        const productCards = document.querySelectorAll(".product-card");
+
+        productCards.forEach((card) => {
+          const img = card.querySelector(".product-image img");
+          const productName = card.querySelector(".product-name").textContent;
+          const price = card.querySelector(".discount-price").textContent;
+
+          if (img) {
+            const imageSrc = img.src;
+            card.setAttribute(
+              "onclick",
+              `orderProduct('${productName}', '${price}', '${imageSrc}')`
+            );
+          }
+        });
+      });
+
+      function closeModal() {
+        document.getElementById("orderModal").classList.remove("active");
+        document.body.style.overflow = "auto";
+        document.getElementById("orderForm").reset();
+
+        // Reset delivery method selection visual state
+        document.querySelectorAll(".delivery-option").forEach((option) => {
+          option.classList.remove("selected");
+        });
+
+        // Reset address field visibility
+        const addressGroup = document.getElementById("addressGroup");
+        const deliveryAddress = document.getElementById("deliveryAddress");
+        addressGroup.style.display = "block";
+        deliveryAddress.setAttribute("required", "required");
+      }
+
+      // Handle form submission
+      document
+        .getElementById("orderForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          const formData = new FormData(this);
+          const data = Object.fromEntries(formData);
+
+          // Format the date
+          const date = new Date(data.deliveryDate);
+          const months = [
+            "Januari",
+            "Februari",
+            "Maret",
+            "April",
+            "Mei",
+            "Juni",
+            "Juli",
+            "Agustus",
+            "September",
+            "Oktober",
+            "November",
+            "Desember",
+          ];
+          const formattedDate = `${date.getDate()} ${
+            months[date.getMonth()]
+          } ${date.getFullYear()}`;
+
+          // Format time
+          const time = data.deliveryTime;
+          const [hours, minutes] = time.split(":");
+          const hour = parseInt(hours);
+          let timeText = "";
+
+          if (hour < 12) {
+            timeText = `${time} WIB`;
+          } else if (hour === 12) {
+            timeText = `${time} WIB`;
+          } else if (hour < 18) {
+            timeText = `${time} WIB`;
+          } else {
+            timeText = `${time} WIB`;
+          }
+
+          // Determine delivery method text
+          const deliveryMethodText =
+            data.deliveryMethod === "delivery" ? "Diantar" : "Ambil Sendiri";
+          const addressLine =
+            data.deliveryMethod === "delivery"
+              ? `• Alamat Pengiriman: ${data.deliveryAddress}`
+              : "• Lokasi Pickup: Flowfy Store, Bojongsoang, Bandung";
+
+          const message = `Halo Flowfy! 
+
+Saya ingin memesan bouquet dengan detail berikut:
+
+• Nama Pemesan: ${data.customerName}
+• Nomor HP: ${data.phoneNumber}
+• Metode: ${deliveryMethodText}
+${addressLine}
+• Tanggal & Jam ${
+            data.deliveryMethod === "delivery" ? "Pengiriman" : "Pickup"
+          }: ${formattedDate}, ${timeText}
+• Rincian Pesanan: ${selectedProductData.name} - ${selectedProductData.price}${
+            data.orderDetails ? "\n  Catatan: " + data.orderDetails : ""
+          }
+• Tulisan di Kartu Ucapan: ${data.cardMessage || "Tidak ada"}
+
+Mohon konfirmasi ketersediaan dan total pembayaran. Terima kasih! `;
+
+          const whatsappURL = `https://wa.me/6281247563841?text=${encodeURIComponent(
+            message
+          )}`;
+          window.open(whatsappURL, "_blank");
+          closeModal();
+        });
+
+      // Close modal when clicking outside
+      document
+        .getElementById("orderModal")
+        .addEventListener("click", function (e) {
+          if (e.target === this) {
+            closeModal();
+          }
+        });
+
+      // Handle delivery method selection
+      document.addEventListener("DOMContentLoaded", function () {
+        const deliveryRadios = document.querySelectorAll(
+          'input[name="deliveryMethod"]'
+        );
+        const addressGroup = document.getElementById("addressGroup");
+        const deliveryAddress = document.getElementById("deliveryAddress");
+        const dateLabel = document.getElementById("dateLabel");
+        const timeLabel = document.getElementById("timeLabel");
+
+        deliveryRadios.forEach((radio) => {
+          radio.addEventListener("change", function () {
+            // Update selected visual state
+            document.querySelectorAll(".delivery-option").forEach((option) => {
+              option.classList.remove("selected");
+            });
+            this.closest(".delivery-option").classList.add("selected");
+
+            // Toggle address field based on delivery method
+            if (this.value === "pickup") {
+              addressGroup.style.display = "none";
+              deliveryAddress.removeAttribute("required");
+              dateLabel.textContent = "Tanggal Pickup";
+              timeLabel.textContent = "Jam Pickup";
+            } else {
+              addressGroup.style.display = "block";
+              deliveryAddress.setAttribute("required", "required");
+              dateLabel.textContent = "Tanggal Pengiriman";
+              timeLabel.textContent = "Jam";
+              // Lanjutan kode JavaScript yang terpotong di bagian akhir
+              timeLabel.textContent = "Jam Pengiriman";
+            }
+          });
+        });
+
+        // Set minimum date to today
+        const today = new Date();
+        const minDate = today.toISOString().split("T")[0];
+        document.getElementById("deliveryDate").setAttribute("min", minDate);
+      });
+
+      // Handle visual feedback for delivery options
+      document.querySelectorAll(".delivery-option").forEach((option) => {
+        option.addEventListener("click", function () {
+          const radio = this.querySelector('input[type="radio"]');
+          if (radio) {
+            radio.checked = true;
+            // Trigger change event to update UI
+            radio.dispatchEvent(new Event("change"));
+          }
+        });
+      });
+
+      // Add smooth scrolling for better UX
+      document.addEventListener("click", function (e) {
+        if (e.target.classList.contains("social-btn")) {
+          // Add ripple effect
+          const ripple = document.createElement("span");
+          ripple.style.cssText = `
+                          position: absolute;
+                          border-radius: 50%;
+                          background: rgba(255,255,255,0.3);
+                          transform: scale(0);
+                          animation: ripple 0.6s linear;
+                          pointer-events: none;
+                      `;
+
+          const rect = e.target.getBoundingClientRect();
+          const size = Math.max(rect.width, rect.height);
+          ripple.style.width = ripple.style.height = size + "px";
+          ripple.style.left = e.clientX - rect.left - size / 2 + "px";
+          ripple.style.top = e.clientY - rect.top - size / 2 + "px";
+
+          e.target.style.position = "relative";
+          e.target.style.overflow = "hidden";
+          e.target.appendChild(ripple);
+
+          setTimeout(() => ripple.remove(), 600);
+        }
+      });
+
+      // Add CSS for ripple animation
+      const style = document.createElement("style");
+      style.textContent = `
+                  @keyframes ripple {
+                      to {
+                          transform: scale(4);
+                          opacity: 0;
+                      }
+                  }
+              `;
+      document.head.appendChild(style);
+
+      // Form validation enhancements
+      document
+        .getElementById("phoneNumber")
+        .addEventListener("input", function (e) {
+          let value = e.target.value.replace(/\D/g, ""); // Remove non-digits
+
+          // Auto-format Indonesian phone numbers
+          if (value.startsWith("0")) {
+            value = "62" + value.substring(1);
+          } else if (!value.startsWith("62")) {
+            value = "62" + value;
+          }
+
+          // Format with country code
+          if (value.length > 2) {
+            let formatted = "+" + value.substring(0, 2);
+            if (value.length > 2) formatted += " " + value.substring(2, 5);
+            if (value.length > 5) formatted += "-" + value.substring(5, 9);
+            if (value.length > 9) formatted += "-" + value.substring(9, 13);
+            e.target.value = formatted;
+          }
+        });
+
+      // Custom product handling
+      document.addEventListener("DOMContentLoaded", function () {
+        // Handle custom product orders differently
+        const customCard = document.querySelector(".custom-card");
+        if (customCard) {
+          customCard.addEventListener("click", function () {
+            // For custom orders, show additional fields or different flow
+            orderProduct("Custom Bouquet", "Harga sesuai request");
+
+            // Add custom product specific handling
+            setTimeout(() => {
+              const orderDetailsField = document.getElementById("orderDetails");
+              orderDetailsField.placeholder =
+                "Jelaskan detail custom bouquet yang Anda inginkan (jenis bunga, warna, ukuran, tema, dll.)";
+              orderDetailsField.setAttribute("required", "required");
+
+              // Add custom product note
+              const customNote = document.createElement("div");
+              customNote.style.cssText = `
+                                  background: linear-gradient(135deg, #fff3cd 0%, #ffeaa7 100%);
+                                  padding: 12px;
+                                  border-radius: 8px;
+                                  margin-bottom: 15px;
+                                  border-left: 4px solid #f39c12;
+                                  font-size: 0.9rem;
+                                  color: #856404;
+                              `;
+              customNote.innerHTML = `
+                                  <strong>📝 Catatan Custom Bouquet:</strong><br>
+                                  Mohon jelaskan detail keinginan Anda secara lengkap agar kami dapat memberikan estimasi harga yang tepat.
+                              `;
+
+              orderDetailsField.parentNode.insertBefore(
+                customNote,
+                orderDetailsField
+              );
+            }, 100);
+          });
+        }
+      });
+
+      // Add loading state for form submission
+      const originalSubmitHandler =
+        document.getElementById("orderForm").onsubmit;
+      document
+        .getElementById("orderForm")
+        .addEventListener("submit", function (e) {
+          const submitBtn = this.querySelector(".btn-order");
+          const originalText = submitBtn.textContent;
+
+          submitBtn.textContent = "Mengirim...";
+          submitBtn.disabled = true;
+
+          // Reset after a short delay (since we're redirecting to WhatsApp)
+          setTimeout(() => {
+            submitBtn.textContent = originalText;
+            submitBtn.disabled = false;
+          }, 3000);
+        });
+
+      // Add keyboard navigation support
+      document.addEventListener("keydown", function (e) {
+        if (
+          e.key === "Escape" &&
+          document.getElementById("orderModal").classList.contains("active")
+        ) {
+          closeModal();
+        }
+      });
+
+      // Enhance tab switching with keyboard support
+      document.addEventListener("keydown", function (e) {
+        const activeTab = document.querySelector(".tab-btn.active");
+        const allTabs = document.querySelectorAll(".tab-btn");
+        const currentIndex = Array.from(allTabs).indexOf(activeTab);
+
+        if (e.key === "ArrowLeft" && currentIndex > 0) {
+          allTabs[currentIndex - 1].click();
+        } else if (
+          e.key === "ArrowRight" &&
+          currentIndex < allTabs.length - 1
+        ) {
+          allTabs[currentIndex + 1].click();
+        }
+      });
+
+      // Add product card hover effects enhancement
+      document.querySelectorAll(".product-card").forEach((card) => {
+        card.addEventListener("mouseenter", function () {
+          this.style.transform = "translateY(-8px) scale(1.02)";
+        });
+
+        card.addEventListener("mouseleave", function () {
+          this.style.transform = "translateY(0) scale(1)";
+        });
+      });
+    </script>
+  </body>
+</html>
