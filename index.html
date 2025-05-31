@@ -3,7 +3,89 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Flowfy - Beautiful Bouquets</title>
+
+    <!-- SEO Meta Tags -->
+    <title>
+      Flowfy - Toko Buket Bunga Artificial Premium Bandung | Bouquet Cantik
+      untuk Setiap Momen
+    </title>
+    <meta
+      name="description"
+      content="Flowfy menyediakan buket bunga artificial premium di Bojongsoang, Bandung. Cocok untuk ulang tahun, anniversary, wisuda. Delivery & pickup tersedia. Pesan sekarang!"
+    />
+    <meta
+      name="keywords"
+      content="buket bunga artificial, buket bunga bandung, florist bandung, buket ulang tahun, buket wisuda, buket anniversary, bouquet artificial, flowfy"
+    />
+    <meta name="author" content="Flowfy" />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Open Graph Meta Tags -->
+    <meta
+      property="og:title"
+      content="Flowfy - Buket Bunga Artificial Premium Bandung"
+    />
+    <meta
+      property="og:description"
+      content="Toko buket bunga artificial premium di Bojongsoang, Bandung. Rangkaian bunga cantik untuk ulang tahun, anniversary, wisuda dan momen spesial lainnya."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://flowfy.id" />
+    <meta property="og:image" content="images/logo_flowfy.png" />
+    <meta property="og:locale" content="id_ID" />
+    <meta property="og:site_name" content="Flowfy" />
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Flowfy - Buket Bunga Artificial Premium Bandung"
+    />
+    <meta
+      name="twitter:description"
+      content="Toko buket bunga artificial premium di Bojongsoang, Bandung. Pesan buket cantik untuk momen spesial Anda!"
+    />
+    <meta name="twitter:image" content="images/logo_flowfy.png" />
+
+    <!-- Favicon -->
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%23f8bbd9'/%3E%3Cpath d='M50 20 Q60 30 50 40 Q40 30 50 20' fill='%23e8a5c8'/%3E%3Cpath d='M30 50 Q40 60 30 70 Q20 60 30 50' fill='%23d4a5e8'/%3E%3Cpath d='M70 50 Q80 60 70 70 Q60 60 70 50' fill='%23e8a5c8'/%3E%3Cpath d='M50 70 Q60 80 50 90 Q40 80 50 70' fill='%23f8bbd9'/%3E%3Ccircle cx='50' cy='50' r='8' fill='%23fff'/%3E%3C/svg%3E"
+    />
+    <link
+      rel="apple-touch-icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%23f8bbd9'/%3E%3Cpath d='M50 20 Q60 30 50 40 Q40 30 50 20' fill='%23e8a5c8'/%3E%3Cpath d='M30 50 Q40 60 30 70 Q20 60 30 50' fill='%23d4a5e8'/%3E%3Cpath d='M70 50 Q80 60 70 70 Q60 60 70 50' fill='%23e8a5c8'/%3E%3Cpath d='M50 70 Q60 80 50 90 Q40 80 50 70' fill='%23f8bbd9'/%3E%3Ccircle cx='50' cy='50' r='8' fill='%23fff'/%3E%3C/svg%3E"
+    />
+
+    <!-- Structured Data for Local Business -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "Flowfy",
+        "description": "Toko buket bunga artificial premium di Bojongsoang, Bandung",
+        "url": "https://flowfy.id",
+        "telephone": "+62-812-4756-3841",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Bojongsoang",
+          "addressLocality": "Bandung",
+          "addressRegion": "Jawa Barat",
+          "addressCountry": "ID"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": -6.9734,
+          "longitude": 107.6362
+        },
+        "openingHours": "Mo-Su 08:00-20:00",
+        "priceRange": "$$",
+        "servesCuisine": "Florist",
+        "sameAs": ["https://instagram.com/flowfy.gift"]
+      }
+    </script>
+    <title>Flowfy</title>
     <style>
       * {
         margin: 0;
@@ -72,6 +154,25 @@
         font-size: 1rem;
         position: relative;
         z-index: 1;
+      }
+
+      /* Update banner untuk logo */
+      .banner-logo {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        margin: 0 auto 15px;
+        border: 3px solid rgba(255, 255, 255, 0.3);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        background: white;
+        padding: 5px;
+      }
+
+      .banner-logo img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        border-radius: 50%;
       }
 
       /* Social Media Section */
@@ -214,6 +315,50 @@
         font-size: 0.9rem;
       }
 
+      .product-image-container {
+        position: relative;
+        width: 100%;
+        height: 120px;
+        border-radius: 10px;
+        overflow: hidden;
+        margin-bottom: 10px;
+      }
+
+      .view-image-btn {
+        position: absolute;
+        top: 8px;
+        right: 8px;
+        background: rgba(0, 0, 0, 0.7);
+        color: white;
+        border: none;
+        border-radius: 50%;
+        width: 30px;
+        height: 30px;
+        font-size: 12px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        transition: all 0.3s ease;
+        z-index: 10;
+      }
+
+      .product-card:hover .view-image-btn {
+        opacity: 1;
+      }
+
+      .view-image-btn:hover {
+        background: rgba(0, 0, 0, 0.9);
+        transform: scale(1.1);
+      }
+
+      .error-message {
+        background: linear-gradient(135deg, #fff3cd 0%, #ffeaa7 100%);
+        border: 1px solid #ffeaa7;
+        border-radius: 10px;
+      }
+
       .price-container {
         justify-content: center;
         align-items: center;
@@ -317,7 +462,9 @@
       }
 
       .modal {
-        background: white;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
         border-radius: 20px;
         padding: 25px;
         width: 90%;
@@ -337,6 +484,110 @@
           opacity: 1;
           transform: translateY(0) scale(1);
         }
+      }
+
+      /* Image Modal Styles with Glassmorphism */
+      .image-modal-overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.7);
+        z-index: 2000;
+        backdrop-filter: blur(10px);
+      }
+
+      .image-modal-overlay.active {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        animation: fadeIn 0.3s ease;
+      }
+
+      .image-modal {
+        position: relative;
+        max-width: 30vw;
+        max-height: 90vh;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+        animation: zoomIn 0.3s ease;
+      }
+
+      @keyframes zoomIn {
+        from {
+          opacity: 0;
+          transform: scale(0.8);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+
+      .image-modal img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        display: block;
+        border-radius: 15px;
+        padding: 0px 0px 20% 0px;
+      }
+
+      .image-modal-close {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        background: rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(10px);
+        color: white;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        font-size: 20px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+        z-index: 1;
+      }
+
+      .image-modal-close:hover {
+        background: rgba(0, 0, 0, 0.7);
+        transform: scale(1.1);
+      }
+
+      .image-modal-info {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(15px);
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        color: white;
+        padding: 20px;
+        text-align: center;
+        border-radius: 0 0 20px 20px;
+      }
+
+      .image-modal-title {
+        font-size: 1.2rem;
+        font-weight: 600;
+        margin-bottom: 5px;
+      }
+
+      .image-modal-price {
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: #f8bbd9;
       }
 
       .modal-header {
@@ -395,6 +646,16 @@
       .form-group textarea {
         resize: vertical;
         min-height: 80px;
+      }
+
+      .form-group input::placeholder {
+        opacity: 0.3;
+        color: #888;
+      }
+
+      .form-group textarea::placeholder {
+        opacity: 0.3;
+        color: #888;
       }
 
       .datetime-row {
@@ -578,6 +839,21 @@
           width: 80px;
           height: 80px;
         }
+
+        .image-modal {
+          max-width: 95vw;
+          max-height: 95vh;
+        }
+
+        .image-modal-close {
+          width: 35px;
+          height: 35px;
+          font-size: 18px;
+        }
+
+        .view-image-btn {
+          opacity: 1; /* Always visible on mobile */
+        }
       }
     </style>
   </head>
@@ -585,6 +861,9 @@
     <div class="container">
       <!-- Banner Section -->
       <div class="banner">
+        <div class="banner-logo">
+          <img src="images/logo_flowfy.png" alt="Flowfy Logo" />
+        </div>
         <h1>🌸 Flowfy</h1>
         <p>Beautiful Bouquets for Every Moment</p>
       </div>
@@ -599,6 +878,13 @@
             target="_blank"
           >
             📸 Instagram
+          </a>
+          <a
+            href="https://wa.me/6281247563841"
+            class="social-btn"
+            target="_blank"
+          >
+            💬 WhatsApp
           </a>
         </div>
       </div>
@@ -615,83 +901,7 @@
         <!-- Products Tab -->
         <div class="tab-content active" id="products">
           <div class="products-grid">
-            <div
-              class="product-card"
-              onclick="orderProduct('Lily Elegance Bouquet', 'Rp 65.000')"
-            >
-              <div class="product-image">
-                <img
-                  src="images/500131920_17844990513488890_509485197936157356_n.jpg"
-                  alt="Lily Elegance Bouquet"
-                  style="
-                    width: 100%;
-                    height: 100%;
-                    object-fit: cover;
-                    border-radius: 10px;
-                  "
-                />
-              </div>
-              <h4 class="product-name">Lily Elegance Bouquet</h4>
-              <div class="price-container">
-                <span class="original-price">Rp 105.000</span>
-                <div class="discount-container">
-                  <span class="discount-percentage">-38%</span>
-                  <span class="discount-price">Rp 65.000</span>
-                </div>
-              </div>
-            </div>
-
-            <div
-              class="product-card"
-              onclick="orderProduct('Blue Harmony Bouquet', 'Rp 45.000')"
-            >
-              <div class="product-image">
-                <img
-                  src="images/501159486_17845071756488890_1116318068030086047_n.jpg"
-                  alt="Blue Harmony Bouquet"
-                  style="
-                    width: 100%;
-                    height: 100%;
-                    object-fit: cover;
-                    border-radius: 10px;
-                  "
-                />
-              </div>
-              <h4 class="product-name">Blue Harmony Bouquet</h4>
-              <div class="price-container">
-                <span class="original-price">Rp 95.000</span>
-                <div class="discount-container">
-                  <span class="discount-percentage">-53%</span>
-                  <span class="discount-price">Rp 45.000</span>
-                </div>
-              </div>
-            </div>
-
-            <div
-              class="product-card"
-              onclick="orderProduct('Gerbera Sunshine Bouquet', 'Rp 75.000')"
-            >
-              <div class="product-image">
-                <img
-                  src="images/501679534_17846087607488890_4761912365636862771_n.jpg"
-                  alt="Gerbera Sunshine Bouquet"
-                  style="
-                    width: 100%;
-                    height: 100%;
-                    object-fit: cover;
-                    border-radius: 10px;
-                  "
-                />
-              </div>
-              <h4 class="product-name">Gerbera Sunshine Bouquet</h4>
-              <div class="price-container">
-                <span class="original-price">Rp 125.000</span>
-                <div class="discount-container">
-                  <span class="discount-percentage">-40%</span>
-                  <span class="discount-price">Rp 75.000</span>
-                </div>
-              </div>
-            </div>
+            <!-- Product cards will be generated dynamically by JavaScript -->
 
             <div
               class="product-card custom-card"
@@ -759,7 +969,7 @@
               id="customerName"
               name="customerName"
               required
-              placeholder="Contoh: Adida"
+              placeholder="Contoh: Afifa"
             />
           </div>
 
@@ -870,8 +1080,103 @@
       </div>
     </div>
 
+    <div class="image-modal-overlay" id="imageModal">
+      <div class="image-modal">
+        <button class="image-modal-close" onclick="closeImageModal()">✕</button>
+        <img id="modalImage" src="" alt="" />
+        <div class="image-modal-info">
+          <div class="image-modal-title" id="modalTitle"></div>
+          <div class="image-modal-price" id="modalPrice"></div>
+        </div>
+      </div>
+    </div>
+
     <script>
       let selectedProductData = {};
+
+      document.addEventListener("DOMContentLoaded", function () {
+        // Product data
+        const productData = [
+          {
+            name: "Lily Elegance Bouquet",
+            price: "Rp 65.000",
+            originalPrice: "Rp 105.000",
+            discount: "-38%",
+            image:
+              "images/500131920_17844990513488890_509485197936157356_n.jpg",
+          },
+          {
+            name: "Blue Harmony Bouquet",
+            price: "Rp 45.000",
+            originalPrice: "Rp 95.000",
+            discount: "-53%",
+            image:
+              "images/501159486_17845071756488890_1116318068030086047_n.jpg",
+          },
+          {
+            name: "Gerbera Sunshine Bouquet",
+            price: "Rp 75.000",
+            originalPrice: "Rp 125.000",
+            discount: "-40%",
+            image:
+              "images/501679534_17846087607488890_4761912365636862771_n.jpg",
+          },
+        ];
+
+        // Generate product cards dynamically
+        const productsGrid = document.querySelector(".products-grid");
+        const customCard = productsGrid.querySelector(".custom-card");
+
+        // Clear existing product cards (except custom card)
+        const existingCards = productsGrid.querySelectorAll(
+          ".product-card:not(.custom-card)"
+        );
+        existingCards.forEach((card) => card.remove());
+
+        // Generate new product cards from data
+        productData.forEach((product, index) => {
+          const productCard = document.createElement("div");
+          productCard.className = "product-card";
+          productCard.onclick = () =>
+            orderProduct(product.name, product.price, product.image);
+
+          productCard.innerHTML = `
+            <div class="product-image-container">
+              <div class="product-image">
+                <img
+                  src="${product.image}"
+                  alt="${product.name}"
+                  style="
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    border-radius: 10px;
+                  "
+                  onerror="this.style.display='none'; this.parentNode.innerHTML='<div style=\\"display: flex; align-items: center; justify-content: center; height: 100%; font-size: 2rem;\\"></div>'"
+                />
+              </div>
+              <button
+                class="view-image-btn"
+                onclick="event.stopPropagation(); viewImage('${product.image}', '${product.name}', '${product.price}')"
+                title="Lihat gambar detail"
+              >
+                🔍
+              </button>
+            </div>
+            <h4 class="product-name">${product.name}</h4>
+            <div class="price-container">
+              <span class="original-price">${product.originalPrice}</span>
+              <div class="discount-container">
+                <span class="discount-percentage">${product.discount}</span>
+                <span class="discount-price">${product.price}</span>
+              </div>
+            </div>
+          `;
+
+          // Insert before custom card
+          productsGrid.insertBefore(productCard, customCard);
+        });
+      });
 
       function switchTab(tabName) {
         // Hide all tab contents
@@ -1264,6 +1569,88 @@ Mohon konfirmasi ketersediaan dan total pembayaran. Terima kasih! `;
           this.style.transform = "translateY(0) scale(1)";
         });
       });
+
+      // Image Modal Functions
+      function viewImage(imageSrc, productName, price) {
+        const modal = document.getElementById("imageModal");
+        const modalImage = document.getElementById("modalImage");
+        const modalTitle = document.getElementById("modalTitle");
+        const modalPrice = document.getElementById("modalPrice");
+
+        // Reset previous error states
+        const existingError = modal.querySelector(".error-message");
+        if (existingError) {
+          existingError.remove();
+        }
+        modalImage.style.display = "block";
+
+        modalImage.src = imageSrc;
+        modalImage.alt = productName;
+        modalTitle.textContent = productName;
+        modalPrice.textContent = price;
+
+        modal.classList.add("active");
+        document.body.style.overflow = "hidden";
+      }
+
+      function closeImageModal() {
+        const modal = document.getElementById("imageModal");
+        modal.classList.remove("active");
+        document.body.style.overflow = "auto";
+      }
+
+      // Close image modal when clicking outside
+      document
+        .getElementById("imageModal")
+        .addEventListener("click", function (e) {
+          if (e.target === this) {
+            closeImageModal();
+          }
+        });
+
+      // Close image modal with Escape key
+      document.addEventListener("keydown", function (e) {
+        if (
+          e.key === "Escape" &&
+          document.getElementById("imageModal").classList.contains("active")
+        ) {
+          e.preventDefault();
+          closeImageModal();
+        }
+      });
+
+      // Handle image loading errors
+      document
+        .getElementById("modalImage")
+        .addEventListener("error", function () {
+          this.style.display = "none";
+
+          // Remove existing error message if any
+          const existingError = this.parentNode.querySelector(".error-message");
+          if (existingError) {
+            existingError.remove();
+          }
+
+          const errorMsg = document.createElement("div");
+          errorMsg.className = "error-message";
+          errorMsg.style.cssText = `
+            padding: 40px;
+            text-align: center;
+            color: #666;
+            font-size: 1.1rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 300px;
+          `;
+          errorMsg.innerHTML = `
+            <div style="font-size: 3rem; margin-bottom: 15px;">⚠️</div>
+            <div>Gambar tidak dapat dimuat</div>
+            <div style="font-size: 0.9rem; color: #999; margin-top: 10px;">Periksa koneksi internet atau coba lagi</div>
+          `;
+          this.parentNode.appendChild(errorMsg);
+        });
     </script>
   </body>
 </html>
